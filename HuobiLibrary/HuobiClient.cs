@@ -13,13 +13,12 @@ namespace HuobiLibrary
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://api.huobi.com/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response =  client.GetAsync($"market/trade?symbol={FirstCrypto}{SecondCrypto}").Result;  // Blocking call!    
+            HttpResponseMessage response = client.GetAsync($"market/trade?symbol={FirstCrypto}{SecondCrypto}").Result; 
             if (response.IsSuccessStatusCode)
             {
                 var products = response.Content.ReadAsStringAsync().Result;
                 JObject jObject = JObject.Parse(products);
                 value = (decimal)jObject["tick"]["data"][0]["price"];
-                
             }
             else
             {
