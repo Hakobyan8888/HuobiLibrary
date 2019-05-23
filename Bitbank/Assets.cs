@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HuobiLibrary
+namespace BitbankLibrary
 {
     public class Assets
     {
